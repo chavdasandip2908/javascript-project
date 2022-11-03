@@ -1,0 +1,42 @@
+.calculator-body{
+    text-align: center;
+    background-color:aquamarine ;
+    width: 50%;
+    margin: auto;
+    border: 1px solid black;
+    padding: 2%;
+}
+.header{
+    background-color:azure ;
+    padding:1px;
+    border-radius: 5px;
+
+}
+h1{
+    margin: 10px;
+} 
+.calculator-content div{
+    margin: 10px;
+}  
+.buttons button{
+    background-color: rgb(168, 168, 194);
+    margin: 5px  10px ;
+    padding: 3px 20px;
+    font-size: large;
+    font-weight: bold;
+} 
+.input-fields div input{
+    width: 300px;
+    height: 20px;
+    border-radius: 5px;
+}
+.input-fields div input:hover{
+    background-color: rgb(206, 135, 135);
+}
+#answer-box{
+    background-color: rgb(104, 168, 94);
+    border-radius: 5px;
+    width: 25%;
+    margin: auto;
+}
+

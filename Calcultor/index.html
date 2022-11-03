@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="index2.css">
+</head>
+<body>
+
+    <div class="calculator-body">
+        <div class="header">
+                <h1>Calculator</h1> 
+        </div>
+        <div class="calculator-content">
+            <div class="input-fields">
+                <div id="input-1">
+                    <label class="inputbox">Value 1:</label>
+                    <input type="number" placeholder=" Enter First Value" id="value1">
+                </div>
+                <div id="input-2">
+                    <label class="inputbox">Value 2:</label>
+                    <input type="number" placeholder=" Enter First Value" id="value2">
+                </div>
+            </div>
+            <div class="buttons">
+                <button onclick="calculator('+')">+</button>
+                <button onclick="calculator('-')">-</button>
+                <button onclick="calculator('*')">x</button>
+                <button onclick="calculator('/')">/</button>
+                <button onclick="calculator('%')">%</button>        
+            </div>
+            <div >
+                <p id="answer-box"></p>
+            </div>
+        </div>
+    </div>
+
+
+    
+</body>
+<script>
+    
+    function calculator(operator){
+        let num1 = parseInt( document.getElementById('value1').value);
+        let num2 = parseInt( document.getElementById('value2').value);
+        let answer =  document.getElementById('answer-box'); 
+        switch (operator){
+            case '+':
+                answer.innerText =  `Sum is ${num1 + num2} `;
+                break; 
+            case '-':
+                answer.innerText = `Substraction is ${num1 - num2} `;
+                break; 
+            case '*':
+                answer.innerText = `Multiplication is ${num1 * num2} `;
+                break; 
+            case '/':
+                answer.innerText = `Division is ${num1 / num2} `;
+                break; 
+            case '%':
+                answer.innerText = `Modulo is ${num1 % num2} `;
+                break;  
+        }
+    }
+</script>
+</html>
