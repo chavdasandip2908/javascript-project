@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App - JavaScript</title>
+    <style>
+        @font-face {
+            font-family: 'Rimouski';
+            src: url('rimouski_sb-webfont.woff2') format('woff2'),
+                url('rimouski_sb-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+
+        }
+    </style>
+    <style>
+        * {
+            font-family: "Rimouski";
+        }
+
+        body {
+            background-color: #293251;
+        }
+
+        .container {
+            width: 300px;
+            background-color: #FFF;
+
+            display: block;
+            margin: 0 auto;
+
+            border-radius: 10px;
+            padding-bottom: 50px;
+        }
+
+        .app-title {
+            width: 300px;
+            height: 50px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .app-title p {
+            text-align: center;
+            padding: 15px;
+            margin: 0 auto;
+            font-size: 1.2em;
+            color: #293251;
+        }
+
+        .notification {
+            background-color: #f8d7da;
+            display: none;
+        }
+
+        .notification p {
+            color: #721c24;
+            font-size: 1.2em;
+            margin: 0;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .weather-container {
+            width: 300px;
+            height: 260px;
+            background-color: #F4F9FF;
+        }
+
+        .weather-icon {
+            width: 300px;
+            height: 128px;
+        }
+
+        .weather-icon img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .temperature-value {
+            width: 300px;
+            height: 60px;
+        }
+
+        .temperature-value p {
+            padding: 0;
+            margin: 0;
+            color: #293251;
+            font-size: 4em;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .temperature-value p:hover {}
+
+        .temperature-value span {
+            color: #293251;
+            font-size: 0.5em;
+        }
+
+        .temperature-description {}
+
+        .temperature-description p {
+            padding: 8px;
+            margin: 0;
+            color: #293251;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .location {}
+
+        .location p {
+            margin: 0;
+            padding: 0;
+            color: #293251;
+            text-align: center;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="app-title">
+            <p>Weather</p>
+        </div>
+        <div class="notification"> </div>
+        <div class="weather-container">
+            <div class="weather-icon">
+                <img src="https://github.com/CodeExplainedRepo/Weather-App-JavaScript/blob/master/icons/unknown.png?raw=true" alt="">
+            </div>
+            <div class="temperature-value">
+                <p>- °<span>C</span></p>
+            </div>
+            <div class="temperature-description">
+                <p> - </p>
+            </div>
+            <div class="location">
+                <p>-</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tutorial by http://youtube.com/CodeExplained
+        // api key : 82005d27a116c2880c8f0fcb866998a0
+
+        // SELECT ELEMENTS
+        const iconElement = document.querySelector(".weather-icon");
+        const tempElement = document.querySelector(".temperature-value p");
+        const descElement = document.querySelector(".temperature-description p");
+        const locationElement = document.querySelector(".location p");
+        const notificationElement = document.querySelector(".notification");
+
+        // App data
+        const weather = {};
+
+        weather.temperature = {
+            unit: "celsius"
+        }
+
+        // APP CONSTS AND VARS
+        const KELVIN = 273;
+        // API KEY
+        const key = "82005d27a116c2880c8f0fcb866998a0";
+
+        // CHECK IF BROWSER SUPPORTS GEOLOCATION
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(setPosition, showError);
+        } else {
+            notificationElement.style.display = "block";
+            notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
+        }
+
+        // SET USER'S POSITION
+        function setPosition(position) {
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+
+            getWeather(latitude, longitude);
+        }
+
+        // SHOW ERROR WHEN THERE IS AN ISSUE WITH GEOLOCATION SERVICE
+        function showError(error) {
+            notificationElement.style.display = "block";
+            notificationElement.innerHTML = `<p> ${error.message} </p>`;
+        }
+
+        // GET WEATHER FROM API PROVIDER
+        function getWeather(latitude, longitude) {
+            let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+
+            fetch(api)
+                .then(function (response) {
+                    let data = response.json();
+                    return data;
+                })
+                .then(function (data) {
+                    weather.temperature.value = Math.floor(data.main.temp - KELVIN);
+                    weather.description = data.weather[0].description;
+                    weather.iconId = data.weather[0].icon;
+                    weather.city = data.name;
+                    weather.country = data.sys.country;
+                })
+                .then(function () {
+                    displayWeather();
+                });
+        }
+
+        // DISPLAY WEATHER TO UI
+        function displayWeather() {
+            iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
+            tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+            descElement.innerHTML = weather.description;
+            locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+        }
+
+        // C to F conversion
+        function celsiusToFahrenheit(temperature) {
+            return (temperature * 9 / 5) + 32;
+        }
+
+        // WHEN THE USER CLICKS ON THE TEMPERATURE ELEMENET
+        tempElement.addEventListener("click", function () {
+            if (weather.temperature.value === undefined) return;
+
+            if (weather.temperature.unit == "celsius") {
+                let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
+                fahrenheit = Math.floor(fahrenheit);
+
+                tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
+                weather.temperature.unit = "fahrenheit";
+            } else {
+                tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+                weather.temperature.unit = "celsius"
+            }
+        });
+
+    </script>
+</body>
+
+</html>
