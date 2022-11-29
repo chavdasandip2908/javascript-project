@@ -1,222 +1,312 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
 
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<body>
+  <h1 class="text-green text-center font-weight-bold" style="font-size: 40px;">
+    Form Validation In JavaScript
+  </h1>
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <h1
-      class="text-green text-center font-weight-bold"
-      style="font-size: 40px;"
-    >
-      Form Validation In JavaScript
-    </h1>
+  <h4 class="text-blue text-center font-weight-bold" style="font-size: 20px;">
+    Sign Up
+  </h4>
 
-    <h4 class="text-blue text-center font-weight-bold" style="font-size: 20px;">
-      Sign Up
-    </h4>
+  <div class="container">
+    <br />
 
-    <div class="container">
-      <br />
+    <div class="col-lg-5 m-auto d-block">
+      <form action="project7.html" onsubmit="return validation()" class="bg-light">
+        <div class="form-group">
+          <label for="name" class="font-weight-regular"> Name </label>
+          <input type="text" name="name" class="form-control" id="name" onblur="nameVlid()" autocomplete="off" />
+          <span id="Name" class="text-danger font-weight-regular"> </span>
+        </div>
 
-      <div class="col-lg-5 m-auto d-block">
-        <form action="#" onsubmit="return validation()" class="bg-light">
-          <div class="form-group">
-            <label for="name" class="font-weight-regular"> Name </label>
-            <input
-              type="text"
-              name="name"
-              class="form-control"
-              id="name"
-              autocomplete="off"
-            />
-            <span id="Name" class="text-danger font-weight-regular"> </span>
-          </div>
+        <div class="form-group">
+          <label class="font-weight-regular"> Email </label>
+          <input type="text" name="email" class="form-control" id="emails" onblur="emailVlid()" autocomplete="off" />
+          <span id="emailids" class="text-danger font-weight-regular"> </span>
+        </div>
 
-          <div class="form-group">
-            <label class="font-weight-regular"> Email </label>
-            <input
-              type="text"
-              name="email"
-              class="form-control"
-              id="emails"
-              autocomplete="off"
-            />
-            <span id="emailids" class="text-danger font-weight-regular"> </span>
-          </div>
+        <div class="form-group">
+          <label for="user" class="font-weight-regular"> Username </label>
+          <input type="text" name="user" class="form-control" id="user" onblur="userVlid()" autocomplete="off" />
+          <span id="username" class="text-danger font-weight-regular"> </span>
+        </div>
 
-          <div class="form-group">
-            <label for="user" class="font-weight-regular"> Username </label>
-            <input
-              type="text"
-              name="user"
-              class="form-control"
-              id="user"
-              autocomplete="off"
-            />
-            <span id="username" class="text-danger font-weight-regular"> </span>
-          </div>
+        <div class="form-group">
+          <label class="font-weight-regular"> Password </label>
+          <input type="password" name="pass" class="form-control" id="pass" onblur="passVlid()" autocomplete="off" />
+          <span id="passwords" class="text-danger font-weight-regular">
+          </span>
+        </div>
 
-          <div class="form-group">
-            <label class="font-weight-regular"> Password </label>
-            <input
-              type="password"
-              name="pass"
-              class="form-control"
-              id="pass"
-              autocomplete="off"
-            />
-            <span id="passwords" class="text-danger font-weight-regular">
-            </span>
-          </div>
+        <div class="form-group">
+          <label class="font-weight-regular"> Confirm Password </label>
+          <input type="password" name="conpass" class="form-control" id="conpass" onblur="conpassVlid()"
+            autocomplete="off" />
+          <span id="confrmpass" class="text-danger font-weight-regular">
+          </span>
+        </div>
 
-          <div class="form-group">
-            <label class="font-weight-regular"> Confirm Password </label>
-            <input
-              type="password"
-              name="conpass"
-              class="form-control"
-              id="conpass"
-              autocomplete="off"
-            />
-            <span id="confrmpass" class="text-danger font-weight-regular">
-            </span>
-          </div>
+        <div class="form-group">
+          <label class="font-weight-regular"> Mobile Number </label>
+          <input type="text" name="mobile" class="form-control" id="mobileNumber" onblur="numberVlid()"
+            autocomplete="off" />
+          <span id="mobileno" class="text-danger font-weight-regular"> </span>
+        </div>
 
-          <div class="form-group">
-            <label class="font-weight-regular"> Mobile Number </label>
-            <input
-              type="text"
-              name="mobile"
-              class="form-control"
-              id="mobileNumber"
-              autocomplete="off"
-            />
-            <span id="mobileno" class="text-danger font-weight-regular"> </span>
-          </div>
+        <input type="submit" name="submit" value="Submit" class="btn btn-primary" autocomplete="off" />
+        <input type="reset" name="reset" value="Reset" class="btn btn-secondary" autocomplete="off" />
+        &emsp;&emsp;&emsp;Already have an account?
+        <a href="project7.html">Login</a>
+      </form>
 
-          <input
-            type="submit"
-            name="submit"
-            value="Submit"
-            class="btn btn-primary"
-            autocomplete="off"
-          />
-          <input
-            type="reset"
-            name="reset"
-            value="Reset"
-            class="btn btn-secondary"
-            autocomplete="off"
-          />
-          &emsp;&emsp;&emsp;Already have an account?
-          <a href="project7.html">Login</a>
-        </form>
-
-        <br /><br />
-      </div>
+      <br /><br />
     </div>
+  </div>
 
-    <script type="text/javascript">
-      function validation() {
-        var name = document.getElementById("name").value;
-        var user = document.getElementById("user").value;
-        var pass = document.getElementById("pass").value;
-        var confirmpass = document.getElementById("conpass").value;
-        var mobileNumber = document.getElementById("mobileNumber").value;
-        var emails = document.getElementById("emails").value;
+  <script type="text/javascript">
 
-        if (name == "") {
-          document.getElementById("Name").innerHTML =
-            " ** Please fill the Name field";
-          return false;
-        }
-
-        if (emails == "") {
-          document.getElementById("emailids").innerHTML =
-            " ** Please fill the email id field";
-          return false;
-        }
-        if (emails.indexOf("@") <= 0) {
-          document.getElementById("emailids").innerHTML = " ** Invalid Email";
-          return false;
-        }
-
-        if (
-          emails.charAt(emails.length - 4) != "." &&
-          emails.charAt(emails.length - 3) != "."
-        ) {
-          document.getElementById("emailids").innerHTML = " ** Invalid Email";
-          return false;
-        }
-
-        if (user == "") {
-          document.getElementById("username").innerHTML =
-            " ** Please fill the username field";
-          return false;
-        }
-        if (user.length <= 3 || user.length > 20) {
-          document.getElementById("username").innerHTML =
-            " ** Username lenght must be between 3 and 20";
-          return false;
-        }
-        if (!isNaN(user)) {
-          document.getElementById("username").innerHTML =
-            " ** only characters are allowed";
-          return false;
-        }
-
-        if (pass == "") {
-          document.getElementById("passwords").innerHTML =
-            " ** Please fill the password field";
-          return false;
-        }
-        if (pass.length <= 5 || pass.length > 20) {
-          document.getElementById("passwords").innerHTML =
-            " ** Passwords lenght must be between  5 and 20";
-          return false;
-        }
-
-        if (pass != confirmpass) {
-          document.getElementById("confrmpass").innerHTML =
-            " ** Password Mismatch";
-          return false;
-        }
-
-        if (confirmpass == "") {
-          document.getElementById("confrmpass").innerHTML =
-            " ** Please fill the confirmpassword field";
-          return false;
-        }
-
-        if (mobileNumber == "") {
-          document.getElementById("mobileno").innerHTML =
-            " ** Please fill the mobile NUmber field";
-          return false;
-        }
-        if (isNaN(mobileNumber)) {
-          document.getElementById("mobileno").innerHTML =
-            " ** user must write digits only not characters";
-          return false;
-        }
-        if (mobileNumber.length != 11) {
-          document.getElementById("mobileno").innerHTML =
-            " ** Mobile Number must be 11 digits only";
-          return false;
-        }
+    function nameVlid() {
+      // Name Validation Start
+      var name = document.getElementById("name").value;
+      // console.log (typeof name);
+      if (name.trim() == "") {
+        document.getElementById("Name").innerHTML =
+          " ** Please fill the Name field";
+        return false;
       }
-    </script>
-  </body>
+      // else if(name = " ") {
+
+      //  } 
+       else {
+        document.getElementById("Name").style = "display:none";
+      }
+      // Name Validation End
+    }
+
+    function emailVlid() {
+      // Email Validation Start
+      var emails = document.getElementById("emails").value;
+      if (emails == "") {
+        document.getElementById("emailids").innerHTML =
+          " ** Please fill the email id field";
+        return false;
+      }
+      else if (emails.indexOf("@") <= 0) {
+        document.getElementById("emailids").innerHTML = " ** Invalid Email";
+        return false;
+      }
+
+      else if (emails.charAt(emails.length - 4) != "." && emails.charAt(emails.length - 3) != ".") {
+        document.getElementById("emailids").innerHTML = " ** Invalid Email";
+        return false;
+      }
+      else {
+        document.getElementById("emailids").style = "display:none";
+      }
+      // Email Validation End
+    }
+
+    function userVlid() {
+      // userName start
+      var user = document.getElementById("user").value;
+      if (user == "") {
+        document.getElementById("username").innerHTML =
+          " ** Please fill the username field";
+        return false;
+      }
+      else if (user.length <= 3 || user.length > 20) {
+        document.getElementById("username").innerHTML =
+          " ** Username lenght must be between 3 and 20";
+        return false;
+      }
+      else if (!isNaN(user)) {
+        document.getElementById("username").innerHTML =
+          " ** only characters are allowed";
+        return false;
+      } else {
+        document.getElementById("username").style = "display:none";
+      }
+      // userName Validation End
+    }
+
+    function passVlid() {
+      // Password Validation Start
+      var pass = document.getElementById("pass").value;
+      if (pass.trim() == "") {
+        document.getElementById("passwords").innerHTML =
+          " ** Please fill the password field";
+        return false;
+      }
+      else if (pass.length <= 5 || pass.length > 20) {
+        document.getElementById("passwords").innerHTML =
+          " ** Passwords lenght must be between  5 and 20";
+        return false;
+      } else {
+        document.getElementById("passwords").style = "display:none";
+      }
+      // Password Validation End
+    }
+
+    function conpassVlid() {
+      // Confirm Password Validation Start
+      var confirmpass = document.getElementById("conpass").value;
+      var pass = document.getElementById("pass").value;
+      if (pass != confirmpass) {
+        document.getElementById("confrmpass").innerHTML =
+          " ** Password Mismatch";
+        return false;
+      }
+
+      else if (confirmpass == "") {
+        document.getElementById("confrmpass").innerHTML =
+          " ** Please fill the confirmpassword field";
+        return false;
+      } else {
+        document.getElementById("confrmpass").style = "display:none";
+      }
+      // Confirm Password Validation End 
+    }
+
+    function numberVlid() {
+      // Mobile Number Validation Start
+      var mobileNumber = document.getElementById("mobileNumber").value;
+      if (mobileNumber == "") {
+        document.getElementById("mobileno").innerHTML =
+          " ** Please fill the mobile NUmber field";
+        return false;
+      }
+      else if (isNaN(mobileNumber)) {
+        document.getElementById("mobileno").innerHTML =
+          " ** user must write digits only not characters";
+        return false;
+      }
+      else if (mobileNumber.length != 10) {
+        document.getElementById("mobileno").innerHTML =
+          " ** Mobile Number must be 10 digits only";
+        return false;
+      } else {
+        document.getElementById("mobileno").style = "display:none";
+      }
+      // Mobile Number Validation End 
+    }
+
+    function validation() {
+      // Name Validation Start
+      var name = document.getElementById("name").value;
+      if (name == "") {
+        document.getElementById("Name").innerHTML =
+          " ** Please fill the Name field";
+        return false;
+      } else {
+        document.getElementById("Name").style = "display:none";
+      }
+      // Name Validation End 
+
+      // Email Validation Start
+      var emails = document.getElementById("emails").value;
+      if (emails == "") {
+        document.getElementById("emailids").innerHTML =
+          " ** Please fill the email id field";
+        return false;
+      }
+      else if (emails.indexOf("@") <= 0) {
+        document.getElementById("emailids").innerHTML = " ** Invalid Email";
+        return false;
+      }
+
+      else if (emails.charAt(emails.length - 4) != "." && emails.charAt(emails.length - 3) != ".") {
+        document.getElementById("emailids").innerHTML = " ** Invalid Email";
+        return false;
+      }
+      else {
+        document.getElementById("emailids").style = "display:none";
+      }
+      // Email Validation End
+
+      // userName start
+      var user = document.getElementById("user").value;
+      if (user == "") {
+        document.getElementById("username").innerHTML =
+          " ** Please fill the username field";
+        return false;
+      }
+      else if (user.length <= 3 || user.length > 20) {
+        document.getElementById("username").innerHTML =
+          " ** Username lenght must be between 3 and 20";
+        return false;
+      }
+      else if (!isNaN(user)) {
+        document.getElementById("username").innerHTML =
+          " ** only characters are allowed";
+        return false;
+      } else {
+        document.getElementById("username").style = "display:none";
+      }
+      // userName Validation End
+
+      // Password Validation Start
+      var pass = document.getElementById("pass").value;
+      if (pass == "") {
+        document.getElementById("passwords").innerHTML =
+          " ** Please fill the password field";
+        return false;
+      }
+      else if (pass.length <= 5 || pass.length > 20) {
+        document.getElementById("passwords").innerHTML =
+          " ** Passwords lenght must be between  5 and 20";
+        return false;
+      } else {
+        document.getElementById("passwords").style = "display:none";
+      }
+      // Password Validation End
+
+      // Confirm Password Validation Start
+      var confirmpass = document.getElementById("conpass").value;
+      if (pass != confirmpass) {
+        document.getElementById("confrmpass").innerHTML =
+          " ** Password Mismatch";
+        return false;
+      }
+
+      else if (confirmpass == "") {
+        document.getElementById("confrmpass").innerHTML =
+          " ** Please fill the confirmpassword field";
+        return false;
+      } else {
+        document.getElementById("confrmpass").style = "display:none";
+      }
+      // Confirm Password Validation End 
+
+      // Mobile Number Validation Start
+      var mobileNumber = document.getElementById("mobileNumber").value;
+      if (mobileNumber == "") {
+        document.getElementById("mobileno").innerHTML =
+          " ** Please fill the mobile NUmber field";
+        return false;
+      }
+      else if (isNaN(mobileNumber)) {
+        document.getElementById("mobileno").innerHTML =
+          " ** user must write digits only not characters";
+        return false;
+      }
+      else if (mobileNumber.length != 10) {
+        document.getElementById("mobileno").innerHTML =
+          " ** Mobile Number must be 10 digits only";
+        return false;
+      } else {
+        document.getElementById("mobileno").style = "display:none";
+      }
+      // Mobile Number Validation End  
+
+    }
+  </script>
+</body>
+
 </html>

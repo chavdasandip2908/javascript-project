@@ -1,115 +1,134 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <!-- jQuery library -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <h1
-      class="text-green text-center font-weight-bold"
-      style="font-size: 40px;"
-    >
-      Form Validation In JavaScript
-    </h1>
+  <!-- Popper JS -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
 
-    <h4 class="text-blue text-center font-weight-bold" style="font-size: 20px;">
-      Login
-    </h4>
+  <!-- Latest compiled JavaScript -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+</head>
 
-    <div class="container">
-      <br />
+<body>
+  <h1 class="text-green text-center font-weight-bold" style="font-size: 40px;">
+    Form Validation In JavaScript
+  </h1>
 
-      <div class="col-lg-5 m-auto d-block">
-        <form action="#" onsubmit="return validation()" class="bg-light">
-          <div class="form-group">
-            <label for="user" class="font-weight-regular"> Username </label>
-            <input
-              type="text"
-              name="user"
-              class="form-control"
-              id="user"
-              autocomplete="off"
-            />
-            <span id="username" class="text-danger font-weight-regular"> </span>
-          </div>
+  <h4 class="text-blue text-center font-weight-bold" style="font-size: 20px;">
+    Login
+  </h4>
 
-          <div class="form-group">
-            <label class="font-weight-regular"> Password </label>
-            <input
-              type="password"
-              name="pass"
-              class="form-control"
-              id="pass"
-              autocomplete="off"
-            />
-            <span id="passwords" class="text-danger font-weight-regular">
-            </span>
-          </div>
+  <div class="container">
+    <br />
 
-          <input
-            type="submit"
-            name="submit"
-            value="Submit"
-            class="btn btn-success"
-            autocomplete="off"
-          />&emsp;&emsp;&emsp;&emsp; Did not have an account?
-          <a href="index.html">SignUp</a>
-        </form>
+    <div class="col-lg-5 m-auto d-block">
+      <form action="message.html" onsubmit="return uservalidation () "  class="bg-light">
+        <div class="form-group">
+          <label for="user" class="font-weight-regular"> Username </label>
+          <input type="text" name="user" class="form-control" id="user" autocomplete="off" onblur="uservali()" />
+          <span id="username" class="text-danger font-weight-regular"> </span>
+        </div>
 
-        <br /><br />
-      </div>
+        <div class="form-group">
+          <label class="font-weight-regular"> Password </label>
+          <input type="password" name="pass" class="form-control" id="pass" autocomplete="off" onblur=" passvali()"/>
+          <span id="passwords" class="text-danger font-weight-regular">
+          </span>
+        </div>
+
+
+        <input type="submit" name="submit" value="Submit" class="btn btn-success"
+          autocomplete="off" />&emsp;&emsp;&emsp;&emsp; Did not have an account?
+        <a href="index.html">SignUp</a>
+      </form>
+
+      <br /><br />
     </div>
+  </div>
 
-    <script type="text/javascript">
-      function validation() {
-        var user = document.getElementById("user").value;
-        var pass = document.getElementById("pass").value;
+  <script>
 
-        if (user == "") {
-          document.getElementById("username").innerHTML =
-            " ** Please fill the username field";
-          return false;
-        }
-        if (user.length <= 2 || user.length > 20) {
-          document.getElementById("username").innerHTML =
-            " ** Username lenght must be between 2 and 20";
-          return false;
-        }
-        if (!isNaN(user)) {
-          document.getElementById("username").innerHTML =
-            " ** only characters are allowed";
-          return false;
-        }
-
-        if (pass == "") {
-          document.getElementById("passwords").innerHTML =
-            " ** Please fill the password field";
-          return false;
-        }
-        if (pass.length <= 5 || pass.length > 20) {
-          document.getElementById("passwords").innerHTML =
-            " ** Passwords lenght must be between  5 and 20";
-          return false;
-        }
-
-        if (pass != confirmpass) {
-          document.getElementById("confrmpass").innerHTML =
-            " ** Password does not match the confirm password";
-          return false;
-        }
+    function uservali() {
+      var user1 = document.getElementById("user").value;
+      var erruser1 = document.getElementById("username");
+      if (user1 == "") {
+        erruser1.innerHTML = " ** Please fill the username field";
+        return false;
       }
-    </script>
-  </body>
+      else if (user1.length <= 2 || user.length > 20) {
+        erruser1.innerHTML = " ** Username lenght must be between 2 and 20";
+        return false;
+      }
+      else if (!isNaN(user1)) {
+        erruser1.innerHTML = " ** only characters are allowed";
+        return false;
+      }
+      else {
+        erruser1.style = "display:none";
+      }
+    }
+
+
+    function  passvali() {
+      var pass1 = document.getElementById("pass").value;
+      var errpass1 = document.getElementById("passwords");
+      if (pass1 == "") {
+        errpass1.innerHTML = " ** Please fill the password field"; 
+        return false;
+      }
+      else if (pass1.length <= 5 || pass.length > 20) {
+        errpass1.innerHTML = " ** Passwords lenght must be between  5 and 20";
+        return false;
+      }
+      else {
+        errpass1.style = "display:none";
+      }
+    }
+
+
+    function uservalidation() {
+      var user = document.getElementById("user").value;
+      var erruser = document.getElementById("username");
+
+      if (user == "") {
+        erruser.innerHTML = " ** Please fill the username field";
+        return false;
+      }
+      else if (user.length <= 2 || user.length > 20) {
+        derruser.innerHTML = " ** Username lenght must be between 2 and 20";
+        return false;
+      }
+      else if (!isNaN(user)) {
+        erruser.innerHTML = " ** only characters are allowed";
+        return false;
+      }
+      else {
+        erruser.style = "display:none";
+      }
+  //   }
+  // function passvalidation(){
+      var pass = document.getElementById("pass").value;
+      var errpass = document.getElementById("passwords");
+      if (pass.trim()== "" || pass.trim()==null) {
+        errpass.innerHTML = " ** Please fill the password field";
+        return false;
+      }
+      else if (pass.length <= 5 || pass.length > 20) {
+        errpass.innerHTML = " ** Passwords lenght must be between  5 and 20";
+        return false;
+      }
+
+      else {
+        errpass.style = "display:none";
+      }
+    }
+  </script>
+</body>
+
 </html>
