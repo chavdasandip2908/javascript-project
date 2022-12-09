@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>downloder</title>
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* background-color: rgb(86, 180, 214); */
+        }
+        
+        body , #clickbtn{
+            /* background-color: rgb(214 107 86 / 77%); */
+            background-color: #3ab879;
+        }
+
+        .wrapper {
+            background-color: rgb(238, 233, 224);
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 4px;
+            text-align: center;
+            /* height: 300px; */
+        }
+
+        .wrapper h1 {
+            margin-top: 7px;
+        }
+
+        #pasteurl {
+            padding: 10px;
+            width: 89%;
+            margin: 0px 0px 15px 0px;
+            border-radius: 4px;
+        }
+
+        #clickbtn {
+            /* background-color: rgb(86, 180, 214); */
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="contant">
+            <h1>File Downloader</h1>
+            <p>Paste url any file to download.</p>
+        </header>
+        <form action="#">
+            <input type="url" placeholder="Paste file url" id="pasteurl"><br>
+            <button id="clickbtn">Download File </button>
+        </form>
+    </div>
+    <script>
+        const fileInput = document.getElementById("pasteurl"),
+            downloadBtn = document.getElementById("clickbtn");
+        downloadBtn.addEventListener("click", e => {
+            // e.preventDefault();
+            fetchFile(fileInput.value);
+        });
+        function fetchFile(url) {
+            fetch(url).then(res => res.blob()).then(file => {
+                let tempUrl = URL.createObjectURL(file);
+                let aTag = document.createElement("a");
+                aTag.href = tempUrl;
+                aTag.download = "fileName";
+                document.body.appendChild(aTag);
+                aTag.click();
+                aTag.remove();
+            });
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloader</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        body{
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body .downlink {
+            text-decoration: none;
+            font-size: 1.7rem;
+            /* font-family: sana-serif; */
+            color: white;
+            background-color: #3ab879;
+            width: 280px;
+            padding: 20px 0px;
+            text-align: center;
+            border-radius: 10px;
+            border: 2px black solid;
+        }
+        .downlink span{
+            position: relative;
+            width: 1.25rem;
+            visibility: hidden;
+        }
+        .downlink span:after{
+            content: '\21D3';
+            font-size: 1.5rem;
+            position: absolute;
+            padding-left: 10px;
+            animation:down 1s linear infinite ;
+        }
+        @keyframes down {
+            from{
+                top: -10px;
+                opacity: 0;
+            }
+            to{
+                top: 10px;
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <a class="downlink" href="sandip.png" download>Download <span></span></a>
+<script>
+    let button=document.querySelector(".downlink");
+    button.addEventListener("click",()=>{
+        const span=document.querySelector(".downlink span");
+        button.style.paddingRight="10px";
+        span.style.visibility="visible";
+        setTimeout(()=>{
+            span.style.visibility="hidden";
+            button.style.transition="1s ease-in-out";
+            button.style.paddingRight="0px";
+        },3000);
+    })
+</script>    
+</body>
+</html> 
